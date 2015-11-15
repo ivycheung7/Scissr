@@ -1,0 +1,123 @@
+<!--Used as a test file to understand how Firebase works in conjunction with HTML/CSS/JS-->
+
+
+<!DOCTYPE html>
+<body>
+<p>Click the button to get your coordinates.</p>
+<p id="demo"></p>
+<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+<button onclick="getLocation()">Get location!</button>
+<link href="scissr.css" rel="stylesheet" media="screen">
+<script src="scissr.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600,300effect=shadow-multiple' rel='stylesheet' type='text/css'>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/jquery.js"></script>
+
+<p id="demo"></p>
+<div id="mapholder"></div>
+<div id="database">
+	<div>
+		<p id="userArea" onclick="sendUser()">Usernames</p>
+		<p id="push Dict" onclick="pushDict()">Push Dict</p>
+		<p id="updateArea" onclick="updateTest()">Update Test</p>
+		<p id="setArea" onclick="setArea()">Set Area</p>
+		<!--<p id="updateArea" onclick="updateTest()">Update Test</p>-->
+
+
+	</div>
+</div>
+
+<script>
+var coordinates;
+var x = document.getElementById("demo");
+var myDataRef = new Firebase('https://burning-heat-6043.firebaseio.com/');
+var baka = "Jose";
+
+function sendUser(){
+	//Pushes a user
+	myDataRef.push(baka);
+	alert("Sends a name over");
+}
+function pushDict(){
+	//Pushes dictionary
+	myDataRef.push({
+		name: "Jose",
+		sex: "yes pls",
+		location:{
+			city: "New York",
+			state: "New York"
+		}
+	});
+	alert("Set tested");
+}
+//function setArea(){
+//	//Write or replace data to a defined path
+//	myDataRef.
+//	
+//	
+//}
+//
+//function updateTest(){
+//	
+//}
+
+//var usersRef = ref.child("usernames");
+//
+//usersRef.child("bob").set({
+//  date_of_birth: "June 23, 1912",
+//  full_name: "Alan Turing"
+//});
+//usersRef.child("jose").set({
+//  date_of_birth: "December 9, 1906",
+//  full_name: "Grace Hopper"
+//});
+
+function getLocation() {
+    if (navigator.geolocation) {
+       y n navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+//
+//var usersRef = ref.child("users");
+//usersRef.set({
+//  alanisawesome: {
+//    date_of_birth: "June 23, 1912",
+//    full_name: "Alan Turing"
+//  },
+//  gracehop: {
+//    date_of_birth: "December 9, 1906",
+//    full_name: "Grace Hopper"
+//  }
+//});
+//	
+
+
+//function showPosition(position) {
+//    coordinates = position.coords.latitude + "," + position.coords.longitude;
+//	alert(coordinates);
+//	//myDataRef.push(usersRef);
+//	//alert(usersRef.full_name);
+//	var postsRef = ref.child("posts");
+//	var newPostRef = postsRef.push();
+//	newPostRef.set({
+//		author: "gracehop",
+//		title: "Announcing COBOL, a New Programming Language"
+//	});
+//	
+//	//myDataRef.set(latlon);
+//	//myDataRef.push(latlon);
+//	
+//	var img_url = "http://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false";
+//    document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+//}
+
+    
+
+
+</script>
+
+</body>
