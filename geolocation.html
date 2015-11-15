@@ -1,3 +1,4 @@
+<!--Testing geolocation and FireBase-->
 <!DOCTYPE html>
 <body>
 
@@ -33,12 +34,11 @@ var myDataRef = new Firebase('https://burning-heat-6043.firebaseio.com/');
 var baka = "Jose";
 
 function sendUser(){
-	//Pushes a user
 	myDataRef.push(baka);
 	alert("Sends a name over");
+	alert(baka);
 }
 function pushDict(){
-	//Pushes dictionary
 	myDataRef.push({
 		name: "Jose",
 		sex: "yes pls",
