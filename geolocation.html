@@ -17,7 +17,12 @@
 <div id="database">
 	<div>
 		<p id="userArea" onclick="sendUser()">Usernames</p>
-		<p id="setArea" onclick="setTest()">Set Test</p>
+		<p id="push Dict" onclick="pushDict()">Push Dict</p>
+		<!--<p id="updateArea" onclick="updateTest()">Update Test</p>-->
+		<!--<p id="setArea" onclick="setArea()">Set Area</p>-->
+		<!--<p id="updateArea" onclick="updateTest()">Update Test</p>-->
+
+
 	</div>
 </div>
 
@@ -28,10 +33,12 @@ var myDataRef = new Firebase('https://burning-heat-6043.firebaseio.com/');
 var baka = "Jose";
 
 function sendUser(){
+	//Pushes a user
 	myDataRef.push(baka);
-	alert(baka);
+	alert("Sends a name over");
 }
-function setTest(){
+function pushDict(){
+	//Pushes dictionary
 	myDataRef.push({
 		name: "Jose",
 		sex: "yes pls",
@@ -40,7 +47,18 @@ function setTest(){
 			state: "New York"
 		}
 	});
+	alert("Set tested");
 }
+//function setArea(){
+//	//Write or replace data to a defined path
+//	myDataRef.
+//	
+//	
+//}
+//
+//function updateTest(){
+//	
+//}
 
 //var usersRef = ref.child("usernames");
 //
@@ -55,8 +73,8 @@ function setTest(){
 
 function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else { 
+        navigator.geolocation.watchPosition(showPosition);
+    } else {
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
@@ -76,27 +94,13 @@ function getLocation() {
 //	
 
 
-//function showPosition(position) {
-//    coordinates = position.coords.latitude + "," + position.coords.longitude;
-//	alert(coordinates);
-//	//myDataRef.push(usersRef);
-//	//alert(usersRef.full_name);
-//	var postsRef = ref.child("posts");
-//	var newPostRef = postsRef.push();
-//	newPostRef.set({
-//		author: "gracehop",
-//		title: "Announcing COBOL, a New Programming Language"
-//	});
-//	
-//	//myDataRef.set(latlon);
-//	//myDataRef.push(latlon);
-//	
-//	var img_url = "http://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false";
-//    document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
-//}
+function showPosition(position) {
+    coordinates= position.coords.latitude + "," + position.coords.longitude;
 
-    
+    var img_url = "http://maps.googleapis.com/maps/api/staticmap?center="+coordinates+"&zoom=14&size=400x300&sensor=false";
 
+    document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+}
 
 </script>
 
