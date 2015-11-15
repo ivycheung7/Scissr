@@ -75,7 +75,7 @@ function pushDict(){
 
 function getLocation() {
     if (navigator.geolocation) {
-       y n navigator.geolocation.getCurrentPosition(showPosition);
+       navigator.geolocation.getCurrentPosition(showPosition);
     } else { 
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
