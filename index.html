@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -209,7 +209,7 @@ label {
                             <li style = "display: inline;  float: left;" ><label style = "display: block; color: #999;">Password</label>
                             <input type="password" id="password2" placeholder="password" required></li>
                             <li style = " display: inline; float: left;" >
-                            <input type="submit" value="Login" onclick = "logIn()"> </li>
+                            <input type="submit" value="Login"> </li>
                         </ul>
                     </form>
                     </section>
@@ -237,13 +237,33 @@ label {
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
-    <!-- Script to Activate the Carousel -->
     <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
+    var myDataRef = new Firebase('https://burning-heat-6043.firebaseio.com/');
+ 
+    function register() {
+      var email = document.getElementById("usermail").value;
+      var password = document.getElementById("password").value;
+      var years = document.getElementById("age").value;
+      alert(email);
+      alert(password);
+      alert(years);
+      pushDict(email,password,years);
+      alert('why');
+    }
+    
+    function pushDict(email1, password1, years1){
+    	alert('func');
+        myDataRef.push({
+    		email_ad: email1,
+        	pw: password1,
+            age: years1,
+    	});
+        
+    	alert("Info pushed"); 
+    }
+    
+    
+    
     </script>
 
 </body>
-
-</html>
