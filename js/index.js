@@ -9,3 +9,7 @@ function logIn() {
         window.location = "about.html";
     }
 }
+function scrollTo() {
+            $('html, body').animate({ scrollTop: $('#reglog').offset().top }, 'slow');
+            return false;
+        }
