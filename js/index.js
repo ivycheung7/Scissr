@@ -5,8 +5,11 @@ function register() {
 }
 
 function logIn() {
-    if (document.getElementById("usermail2").value == "abc@gmail.com" && document.getElementById("password2").value == "password") {
-        window.location = "about.html";
+    var email = document.getElementById("usermail2").value;
+    var password = document.getElementById("password2").value;
+    if (email == "abc@gmail.com" && password == "password") {
+        var valuationUrl = window.location.protocol + "//" + window.location.host + "/about.html";
+        alert(valuationUrl);
     }
 }
 function scrollTo() {
